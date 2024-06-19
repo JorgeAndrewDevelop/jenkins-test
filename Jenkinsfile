@@ -4,6 +4,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
+                sh 'go mod download'
             }
         }
         stage('Test') {
@@ -14,6 +15,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
+                sh 'go run main.go'
             }
         }
     }
