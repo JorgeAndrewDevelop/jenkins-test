@@ -4,7 +4,11 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh 'go mod download'
+            }
+        }
+        stage('Example') {
+            steps {
+                echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
             }
         }
         stage('Test') {
@@ -15,7 +19,6 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
-                sh 'go run main.go'
             }
         }
     }
